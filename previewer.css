@@ -48,8 +48,9 @@
 	max-height: 90%;
 	max-width: 90%;
 	z-index: 10;
-	
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	animation : pop-animation 0.2s;
+
 }
 
 /* Transperant page fade */
@@ -66,4 +67,26 @@
 /* Use pointer cursor for src img */
 .preview-image, .preview-images>li>img {
 	cursor: pointer;
+}
+
+@keyframes pop-animation {
+from{
+	box-shadow: none;
+	padding:200px;
+}
+to{
+		box-shadow: none;
+	padding:0;
+}
+}
+
+@keyframes exit-animation {
+	from{
+			box-shadow: none;
+		padding:0px;
+	}
+	to{
+			box-shadow: none;
+		padding:300px;
+	}
 }

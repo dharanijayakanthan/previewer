@@ -25,8 +25,13 @@ function Previewer() {
 
 	// Define function to close preview
 	this.closeWindow = function () {
-		document.getElementById("previewer").style.display = "none";
-		document.getElementById("previewer-img").src = "";
+		setTimeout(function(){
+				document.getElementById("previewer").style.display = "none";
+				document.getElementById("previewer-img").style.animation = 'pop-animation 0.5s';
+			},400);
+
+		document.getElementById("previewer-img").style.animation = 'exit-animation 0.5s';
+
 		document.body.style.overflow = "scroll";
 	};
 
@@ -36,7 +41,7 @@ function Previewer() {
 
 	// Call previewer on image click
 	var images = document.querySelectorAll(".preview-image, .preview-images img");
-	
+
 	for (i = 0; i < images.length; i++) {
 		(function(i) {
 			images[i].addEventListener('click', function () {
@@ -59,16 +64,16 @@ function Previewer() {
 
 	function keyCtrl(e) {
 		e = e || window.event;
-		
+
 		// Close preview on esc key
 		if (e.keyCode == '27') {
-			self.closeWindow();		
+			self.closeWindow();
 		}
 
 		// Next image on arrow right
 		if (e.keyCode == '39') {
 			if (current < images.length-1)
-				document.getElementById("previewer-img").src = images[++current].getAttribute("src");		
+				document.getElementById("previewer-img").src = images[++current].getAttribute("src");
 		}
 
 		// Previous image on arrow left
